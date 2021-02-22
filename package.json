@@ -1,6 +1,6 @@
 {
   "name": "@bootcamp-ra/mocha-as-promised",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A mocha.js and chai wrapper that delivers a promise-based API to get test results instead of only printing.",
   "main": "index.js",
   "scripts": {

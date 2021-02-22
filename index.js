@@ -4,6 +4,8 @@ import transformRemoveConsole from "babel-plugin-transform-remove-console";
 import * as Babel from "@babel/standalone";
 import protect from "@freecodecamp/loop-protect";
 
+window.chai = chai;
+
 const {
   EVENT_RUN_BEGIN,
   EVENT_RUN_END,
