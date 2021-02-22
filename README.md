@@ -20,29 +20,29 @@ This module exports a single function:
   returns a promise that resolves to the test results
 
 ```js
-  import mochaAsPromised from '@bootcamp-ra/mocha-as-promised';
+import mochaAsPromised from '@bootcamp-ra/mocha-as-promised';
 
-  async function main () {
-    const code = `
-      function testedFunction (param) {
-        return param;
-      }
-    `;
+async function main () {
+  const code = `
+    function testedFunction (param) {
+      return param;
+    }
+  `;
 
-    const testCode = `
-      describe('testedFunction', () => {
-        it('should return the passed parameter', () => {
-          const param = 10;
+  const testCode = `
+    describe('testedFunction', () => {
+      it('should return the passed parameter', () => {
+        const param = 10;
 
-          const result = testedFunction(param);
+        const result = testedFunction(param);
 
-          expect(result).to.be(param);
-        });
+        expect(result).to.be(param);
       });
-    `;
+    });
+  `;
 
-    const result = await mochaAsPromised.runTests(code, testCode);
-  }
+  const result = await mochaAsPromised.runTests(code, testCode);
+}
 ```
 
 ### 
