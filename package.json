@@ -1,0 +1,27 @@
+{
+  "name": "@bootcamp-ra/mocha-as-promised",
+  "version": "1.0.0",
+  "description": "A mocha.js and chai wrapper that delivers a promise-based API to get test results instead of only printing.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fabiolmorato/mocha-as-promised.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fabiolmorato/mocha-as-promised/issues"
+  },
+  "homepage": "https://github.com/fabiolmorato/mocha-as-promised#readme",
+  "dependencies": {
+    "@babel/standalone": "^7.12.18",
+    "@freecodecamp/loop-protect": "^2.2.1",
+    "babel-plugin-transform-remove-console": "^6.9.4",
+    "chai": "^4.3.0",
+    "mocha": "^8.3.0"
+  }
+}
