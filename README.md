@@ -55,7 +55,7 @@ async function main () {
   /*
    * Will return an object with the following format:
    * {
-   *   failed: 11
+   *   failed: 1
    *   passed: 1,
    *   suites: [
    *     {
