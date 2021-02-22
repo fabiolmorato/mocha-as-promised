@@ -24,15 +24,24 @@ import mochaAsPromised from '@bootcamp-ra/mocha-as-promised';
 
 async function main () {
   const code = `
+    /* This function will pass the first test but not the second */
     function testedFunction (param) {
-      return param;
+      return 10;
     }
   `;
 
   const testCode = `
     describe('testedFunction', () => {
-      it('should return the passed parameter', () => {
+      it('should return the passed parameter (10)', () => {
         const param = 10;
+
+        const result = testedFunction(param);
+
+        expect(result).to.be(param);
+      });
+      
+      it('should return the passed parameter (20)', () => {
+        const param = 20;
 
         const result = testedFunction(param);
 
@@ -42,7 +51,32 @@ async function main () {
   `;
 
   const result = await mochaAsPromised.runTests(code, testCode);
+
+  /*
+   * Will return an object with the following format:
+   * {
+   *   failed: 11
+   *   passed: 1,
+   *   suites: [
+   *     {
+   *       type: 'test',
+   *       title: 'should return the passed parameter (10)',
+   *       state: 'passed',
+   *     },
+   *     {
+   *       type: 'test',
+   *       title: 'should return the passed parameter (20)',
+   *       state: 'failed',
+   *       error: {
+   *         actual: 10,
+   *         expected: 20,
+   *         message: 'expected 10 to equal 20',
+   *         operator: 'strictEqual',
+   *         stack: <Error Stack Trace>
+   *       }
+   *     }
+   *   ]
+   * }
+   */
 }
 ```
-
-### 
