@@ -58,23 +58,25 @@ async function main () {
    *   failed: 1
    *   passed: 1,
    *   suites: [
-   *     {
-   *       type: 'test',
-   *       title: 'should return the passed parameter (10)',
-   *       state: 'passed',
-   *     },
-   *     {
-   *       type: 'test',
-   *       title: 'should return the passed parameter (20)',
-   *       state: 'failed',
-   *       error: {
-   *         actual: 10,
-   *         expected: 20,
-   *         message: 'expected 10 to equal 20',
-   *         operator: 'strictEqual',
-   *         stack: <Error Stack Trace>
+   *     [
+   *       {
+   *         type: 'test',
+   *         title: 'should return the passed parameter (10)',
+   *         state: 'passed',
+   *       },
+   *       {
+   *         type: 'test',
+   *         title: 'should return the passed parameter (20)',
+   *         state: 'failed',
+   *         error: {
+   *           actual: 10,
+   *           expected: 20,
+   *           message: 'expected 10 to equal 20',
+   *           operator: 'strictEqual',
+   *           stack: <Error Stack Trace>
+   *         }
    *       }
-   *     }
+   *     ]
    *   ]
    * }
    */
