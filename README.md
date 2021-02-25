@@ -37,7 +37,7 @@ async function main () {
 
         const result = testedFunction(param);
 
-        expect(result).to.be(param);
+        expect(result).to.equal(param);
       });
       
       it('should return the passed parameter (20)', () => {
@@ -45,7 +45,7 @@ async function main () {
 
         const result = testedFunction(param);
 
-        expect(result).to.be(param);
+        expect(result).to.equal(param);
       });
     });
   `;
