@@ -1,5 +1,5 @@
 # mocha-as-promised
-A mocha.js and chai wrapper that delivers a promise-based API to get test results instead of only printing. Created for Responde Aí's Bootcamp students use on their own Code LMS platform project.
+A mocha.js and chai wrapper that delivers a promise-based API to get test results instead of only printing. Created for Responde Aí's Bootcamp students use on their own Code LMS platform project. It also prevents infinite loops.
 
 This library is **UNSAFE** as it uses `eval` to load the code and the test code (check out Usage to understand why).
 
@@ -15,12 +15,12 @@ yarn add @bootcamp-ra/mocha-as-promised
 
 This module exports a single function:
 
-- runTests
-  receives two strings: the code being tested and the test code
-  returns a promise that resolves to the test results
+- runTests:
+  - receives two strings: the code being tested and the test code
+  - returns a promise that resolves to the test results or rejects if a test takes more than 1.5s to run
 
 ```js
-import mochaAsPromised from '@bootcamp-ra/mocha-as-promised';
+import { runTests } from '@bootcamp-ra/mocha-as-promised';
 
 async function main () {
   const code = `
@@ -50,7 +50,7 @@ async function main () {
     });
   `;
 
-  const result = await mochaAsPromised.runTests(code, testCode);
+  const result = await runTests(code, testCode);
 
   /*
    * Will return an object with the following format:
@@ -79,6 +79,8 @@ async function main () {
    *     ]
    *   ]
    * }
+   * 
+   * May reject if code takes more than 1.5s to run.
    */
 }
 ```
