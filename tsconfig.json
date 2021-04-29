@@ -8,9 +8,6 @@
     "esModuleInterop": true,
     "rootDirs": ["lib", "tests"],
     "baseUrl": "lib",
-    "paths": {
-      "@/*": ["*"]
-    },
     "plugins": [{ "transform": "typescript-transform-paths" }]
   },
   "include": ["lib", "tests"],
