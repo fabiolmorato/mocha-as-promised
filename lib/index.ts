@@ -1,9 +1,21 @@
-import mocha from "mocha/mocha";
-import chai from "chai";
-import transformRemoveConsole from "babel-plugin-transform-remove-console";
-import * as Babel from "@babel/standalone";
-import protect from "@freecodecamp/loop-protect";
+import mocha from 'mocha/mocha';
+import { Runner } from 'mocha';
+import chai from 'chai';
+import * as Babel from '@babel/standalone';
+import protect from '@freecodecamp/loop-protect';
+import {
+  CallbackConsole,
+  CurrentSuite,
+  Reject,
+  Resolve,
+  ResultMocha,
+  Suites,
+  TestWithError,
+  WindowWithChai,
+} from './types';
+import { mockWindowFunction } from './utils';
 
+declare let window: WindowWithChai;
 window.chai = chai;
 
 const {
@@ -16,17 +28,21 @@ const {
 } = mocha.Mocha.Runner.constants;
 
 class ReporterFactory {
-  constructor(...args) {
-    getReporter(...args);
+  static resolve: Resolve;
+  static reject: Reject;
+
+  constructor(runner: Runner) {
+    getReporter(runner);
   }
-  static setResolve(resolve) {
+
+  static setResolve(resolve: Resolve) {
     this.resolve = resolve;
   }
   static getResolve() {
     return this.resolve;
   }
 
-  static setReject(reject) {
+  static setReject(reject: Reject) {
     this.reject = reject;
   }
 
@@ -36,7 +52,15 @@ class ReporterFactory {
 }
 
 class Reporter {
-  constructor(resolve, runner) {
+  test: {
+    passed: number;
+    failed: number;
+    total: number;
+    suites: Suites;
+  };
+  currentSuite: CurrentSuite;
+
+  constructor(resolve: Resolve, runner: Runner) {
     const stats = runner.stats;
     this.test = {
       passed: 0,
@@ -52,15 +76,15 @@ class Reporter {
         this.test.suites.push(this.currentSuite);
         this.currentSuite = [];
       })
-      .on(EVENT_TEST_PASS, (test) => {
+      .on(EVENT_TEST_PASS, (test: TestWithError) => {
         this.test.total++;
         this.test.passed++;
         this.currentSuite.push(test);
       })
-      .on(EVENT_TEST_FAIL, (test, error) => {
+      .on(EVENT_TEST_FAIL, (test: TestWithError, err: Error) => {
         this.test.total++;
         this.test.failed++;
-        test.error = error;
+        test.error = err;
         this.currentSuite.push(test);
       })
       .once(EVENT_RUN_END, () => {
@@ -69,44 +93,40 @@ class Reporter {
   }
 }
 
-function getReporter(...args) {
-  return new Reporter(ReporterFactory.getResolve(), ...args);
+function getReporter(runner: Runner) {
+  return new Reporter(ReporterFactory.getResolve(), runner);
 }
 
 const timeout = 1500;
 Babel.registerPlugin(
-  "loopProtection",
+  'loopProtection',
   protect(timeout, () => {
-    ReporterFactory.getReject()("timeout");
-  })
+    ReporterFactory.getReject()('timeout');
+  }),
 );
 
-Babel.registerPlugin(
-  "babel-plugin-transform-remove-console",
-  transformRemoveConsole
-);
-
-const transform = (source) =>
+const transform = (source: string) =>
   Babel.transform(source, {
-    plugins: ["loopProtection", "babel-plugin-transform-remove-console"],
+    plugins: ['loopProtection'],
   }).code;
 
-let code = "";
-let tests = "";
+let code = '';
+let tests = '';
 
 mocha.setup({
-  ui: "bdd",
+  ui: 'bdd',
   cleanReferencesAfterRun: false,
   reporter: ReporterFactory,
   timeout: 2000,
 });
 
-function run() {
+function run(getConsoleLog: CallbackConsole): Promise<ResultMocha> {
   return new Promise((resolve, reject) => {
     ReporterFactory.setResolve(resolve);
     ReporterFactory.setReject(reject);
     eval(`
       const { expect } = chai;
+      ${mockWindowFunction(getConsoleLog)}
       ${transform(code)};
       ${tests};
       mocha.run();
@@ -114,9 +134,9 @@ function run() {
   });
 }
 
-function reset() {
-  code = "";
-  tests = "";
+function reset(): void {
+  code = '';
+  tests = '';
   if (mocha.suite) {
     if (mocha.suite.suites) mocha.suite.suites.splice(0);
     if (mocha.suite.tests) mocha.suite.tests.splice(0);
@@ -126,25 +146,25 @@ function reset() {
   }
 }
 
-function loadCode(c) {
+function loadCode(c: string): void {
   code = c;
 }
 
-function loadTests(t) {
+function loadTests(t: string): void {
   tests = t;
 }
 
 /**
  * runTests: runs the tests to the code
- * @param {string} code code to be tested 
+ * @param {string} code code to be tested
  * @param {string} tests test code
  * @returns {Promise<Object>} test results
  */
-function runTests(code, tests) {
+function runTests(code: string, tests: string, getConsoleLog?: CallbackConsole): Promise<ResultMocha> {
   reset();
   loadCode(code);
   loadTests(tests);
-  return run();
+  return run(getConsoleLog);
 }
 
 export { runTests };
