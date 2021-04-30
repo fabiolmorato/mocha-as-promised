@@ -89,7 +89,6 @@ export function mockWindowFunction(getConsole: CallableFunction = () => {}): str
   window.StorageEvent = () => {};
 
   window.clientInformation = {};
-  window.navigator = {};
   window.LUX = {};
   window.location = {};
   window.localStorage = () => {};
