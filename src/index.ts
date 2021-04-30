@@ -158,7 +158,8 @@ function loadTests(t: string): void {
  * runTests: runs the tests to the code
  * @param {string} code code to be tested
  * @param {string} tests test code
- * @returns {Promise<Object>} test results
+ * @param {CallbackConsole} callbackConsole function that will overwrite the console and capture the outputs of the tested code
+ * @returns {Promise<ResultMocha>} test results
  */
 function runTests(code: string, tests: string, getConsoleLog?: CallbackConsole): Promise<ResultMocha> {
   reset();
