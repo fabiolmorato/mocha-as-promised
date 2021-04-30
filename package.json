@@ -1,8 +1,8 @@
 {
-  "name": "@ra/mocha-as-promised",
-  "version": "1.0.7",
+  "name": "ra-mocha-as-promised",
+  "version": "1.0.8",
   "description": "A mocha.js and chai wrapper that delivers a promise-based API to get test results instead of only printing.",
-  "main": "dist/index.js",
+  "main": "./dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "start": "node ./dist/index.js",
@@ -12,15 +12,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fabiolmorato/mocha-as-promised.git"
+    "url": "git+https://github.com/oliverdettenborn/mocha-as-promised.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/fabiolmorato/mocha-as-promised/issues"
+    "url": "https://github.com/oliverdettenborn/mocha-as-promised/issues"
   },
-  "homepage": "https://github.com/fabiolmorato/mocha-as-promised#readme",
+  "homepage": "https://github.com/oliverdettenborn/mocha-as-promised#readme",
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "@babel/standalone": "^7.12.18",
     "@freecodecamp/loop-protect": "^2.2.1",
