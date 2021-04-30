@@ -2,19 +2,20 @@
   "compilerOptions": {
     "outDir": "dist",
     "module": "commonjs",
-    "moduleResolution": "node",
-    "removeComments": true,
-    "sourceMap": true,
-    "target": "es2019",
+    "target": "ES5",
     "declaration": true,
     "declarationDir": "./dist",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "esModuleInterop": true,
-    "rootDirs": ["lib", "tests"],
-    "baseUrl": "lib"
+    "sourceMap": false,
+    "baseUrl": "src",
+    "paths": {
+      "@/*": ["*"]
+    },
+    "plugins": [{ "transform": "typescript-transform-paths" }],
+    "typeRoots": ["node_modules/@types"]
   },
-  "lib": ["es2015.promise"],
-  "include": ["lib"],
-  "exclude": ["/tests/*/**"]
+  "include": ["src", "tests"],
+  "exclude": []
 }
