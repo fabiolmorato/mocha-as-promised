@@ -99,9 +99,7 @@ export function mockWindowFunction(getConsole: CallableFunction = () => {}): str
   window.webkitStorageInfo = {};
   prompt = () => {};
   navigator = () => {};
-  storage = () => {};
   location = () => {};
-  storage = () => {};
   webkitStorageInfo = () => {};
   webkitStorageInfo = () => {};
   webkitStorageInfo = () => {};
