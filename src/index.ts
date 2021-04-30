@@ -126,6 +126,7 @@ function run(getConsoleLog: CallbackConsole): Promise<ResultMocha> {
     ReporterFactory.setReject(reject);
     eval(`
       const { expect } = chai;
+      ${mockWindowFunction(getConsoleLog)}
       ${transform(code)};
       ${tests};
       mocha.run();

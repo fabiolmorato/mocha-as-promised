@@ -1,6 +1,6 @@
 {
   "name": "ra-mocha-as-promised",
-  "version": "1.0.9",
+  "version": "1.0.12",
   "description": "A mocha.js and chai wrapper that delivers a promise-based API to get test results instead of only printing.",
   "main": "./dist/index.js",
   "types": "dist/index.d.ts",
