@@ -1,1 +1,1 @@
-export * from './cleanWindow';
+export * from './clean-window';
