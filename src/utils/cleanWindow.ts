@@ -48,14 +48,6 @@ export function mockWindowFunction(getConsole: CallableFunction = () => {}): str
   console.warn = ${getConsole}
   window.alert = () => {};
   alert = () => {};
-  window.open = () => {};
-  window.close = () => {};
-  window.moveTo = () => {};
-  window.resizeTo = () => {};
-  window.onload = () => {};
-  window.atob = () => {};
-  window.blur = () => {};
-  window.btoa = () => {};
   window.print = () => {};
   window.prompt = () => {};
   window.postMessage = () => {};
@@ -63,7 +55,6 @@ export function mockWindowFunction(getConsole: CallableFunction = () => {}): str
   window.showDirectoryPicker = () => {};
   window.showOpenFilePicker = () => {};
   window.showSaveFilePicker = () => {};
-  window.stop = () => {};
   window.Cache = () => {};
   window.CookieStore = () => {};
   window.CacheStorage = () => {};
@@ -84,9 +75,6 @@ export function mockWindowFunction(getConsole: CallableFunction = () => {}): str
   window.PaymentRequestUpdateEvent = () => {};
   window.Storage = () => {};
   window.StorageEvent = () => {};
-
-  window.clientInformation = {};
-  window.LUX = () => {};
   window.location = () => {};;
   window.localStorage = () => {};
   localStorage = () => {};
@@ -111,14 +99,6 @@ export function mockWindowFunction(getConsole: CallableFunction = () => {}): str
   PaymentRequestUpdateEvent = () => {};
   Storage = () => {};
   StorageEvent = () => {};
-  open = () => {};
-  close = () => {};
-  moveTo = () => {};
-  resizeTo = () => {};
-  onload = () => {};
-  atob = () => {};
-  blur = () => {};
-  btoa = () => {};
   print = () => {};
   `;
 }
