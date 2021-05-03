@@ -57,8 +57,6 @@ export function mockWindowFunction(getConsole: CallableFunction = () => {}): str
   window.blur = () => {};
   window.btoa = () => {};
   window.print = () => {};
-  window.cancelAnimationFrame = () => {};
-  window.cancelIdleCallback = () => {};
   window.prompt = () => {};
   window.postMessage = () => {};
   window.queueMicrotask = () => {};
@@ -80,7 +78,6 @@ export function mockWindowFunction(getConsole: CallableFunction = () => {}): str
   window.ImageCapture = () => {};
   window.PaymentAddress = () => {};
   window.PaymentInstruments = () => {};
-  window.globalThis = () => {};
   window.PaymentManager = () => {};
   window.PaymentMethodChangeEvent = () => {};
   window.PaymentRequest = () => {};
@@ -108,7 +105,6 @@ export function mockWindowFunction(getConsole: CallableFunction = () => {}): str
   ImageCapture = () => {};
   PaymentAddress = () => {};
   PaymentInstruments = () => {};
-  globalThis = () => {};
   PaymentManager = () => {};
   PaymentMethodChangeEvent = () => {};
   PaymentRequest = () => {};
