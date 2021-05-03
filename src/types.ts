@@ -1,5 +1,3 @@
-import { Test } from 'mocha';
-
 export interface ResultMocha {
   passed: number;
   failed: number;
@@ -7,7 +5,15 @@ export interface ResultMocha {
   suites: Suites;
 }
 
-export interface TestWithError extends Test {
+export interface TestWithError {
+  id: string;
+  type: string;
+  state: 'passed' | 'failed';
+  title: string;
+  body: string;
+  pending: boolean;
+  sync: boolean;
+  timeOut: boolean;
   error?: Error;
 }
 
