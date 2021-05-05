@@ -8,7 +8,7 @@ import {
   CurrentSuite,
   Reject,
   Resolve,
-  ResultMocha,
+  MochaResult,
   Suites,
   TestWithError,
   WindowWithChai,
@@ -120,7 +120,7 @@ mocha.setup({
   timeout: 2000,
 });
 
-function run(getConsoleLog: CallbackConsole = () => {}): Promise<ResultMocha> {
+function run(getConsoleLog: CallbackConsole = () => {}): Promise<MochaResult> {
   return new Promise((resolve, reject) => {
     ReporterFactory.setResolve(resolve);
     ReporterFactory.setReject(reject);
@@ -167,9 +167,9 @@ function loadTests(t: string): void {
  * @param {string} code code to be tested
  * @param {string} tests test code
  * @param {CallbackConsole} callbackConsole function that will overwrite the console and capture the outputs of the tested code
- * @returns {Promise<ResultMocha>} test results
+ * @returns {Promise<MochaResult>} test results
  */
-function runTests(code: string, tests: string, getConsoleLogLog?: CallbackConsole): Promise<ResultMocha> {
+function runTests(code: string, tests: string, getConsoleLogLog?: CallbackConsole): Promise<MochaResult> {
   reset();
   loadCode(code);
   loadTests(tests);

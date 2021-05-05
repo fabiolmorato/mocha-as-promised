@@ -1,4 +1,4 @@
-export interface ResultMocha {
+export interface MochaResult {
   passed: number;
   failed: number;
   total: number;
