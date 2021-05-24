@@ -1,5 +1,5 @@
 {
-  "name": "ra-mocha-as-promised",
+  "name": "@ra-bootcamp/mocha",
   "version": "1.2.0",
   "description": "A mocha.js and chai wrapper that delivers a promise-based API to get test results instead of only printing.",
   "main": "./dist/index.js",
@@ -14,15 +14,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/oliverdettenborn/mocha-as-promised.git"
+    "url": "git+https://github.com/ra-bootcamp-coordenacao/mocha-as-promised.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/oliverdettenborn/mocha-as-promised/issues"
+    "url": "https://github.com/ra-bootcamp-coordenacao/mocha-as-promised/issues"
   },
-  "homepage": "https://github.com/oliverdettenborn/mocha-as-promised#readme",
+  "homepage": "https://github.com/ra-bootcamp-coordenacao/mocha-as-promised#readme",
   "publishConfig": {
     "access": "public"
   },
