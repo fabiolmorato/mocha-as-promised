@@ -9,9 +9,9 @@ This library is **UNSAFE** as it uses `eval` to load the code and the test code 
 Install the package:
 
 ```sh
-npm install @ra/mocha-as-promised
+npm install @ra-bootcamp/mocha
 # or if using yarn
-yarn add @ra/mocha-as-promised
+yarn add @ra-bootcamp/mocha
 ```
 
 This module exports a single function:
@@ -22,7 +22,7 @@ This module exports a single function:
   - returns a promise that resolves to the test results or rejects if a test takes more than 1.5s to run
 
 ```js
-import { runTests } from '@ra/mocha-as-promised';
+import { runTests } from '@ra-bootcamp/mocha';
 
 async function main() {
   const code = `
