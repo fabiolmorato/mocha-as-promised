@@ -35,6 +35,7 @@ export type Reject = (reason?: any) => void;
 
 export type CallbackConsole = (value: any) => void;
 
-export interface WindowWithChai extends Window {
+export interface WindowWithChaiAndSinon extends Window {
   chai: Chai.ChaiStatic | any;
+  sinon: sinon.SinonStatic | any;
 }

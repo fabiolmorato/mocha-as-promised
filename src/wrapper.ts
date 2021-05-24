@@ -1,6 +1,7 @@
 import mocha from 'mocha/mocha';
 import { Runner } from 'mocha';
 import chai from 'chai';
+import sinon from 'sinon';
 import * as Babel from '@babel/standalone';
 import protect from '@freecodecamp/loop-protect';
 import {
@@ -11,12 +12,13 @@ import {
   MochaResult,
   Suites,
   TestWithError,
-  WindowWithChai,
+  WindowWithChaiAndSinon,
 } from './types';
 import { mockWindowFunction } from './utils';
 
-declare let window: WindowWithChai;
+declare let window: WindowWithChaiAndSinon;
 window.chai = chai;
+window.sinon = sinon;
 
 const {
   EVENT_RUN_BEGIN,
