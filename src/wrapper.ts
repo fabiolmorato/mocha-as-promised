@@ -126,18 +126,19 @@ function run(getConsoleLog: CallbackConsole = () => {}): Promise<MochaResult> {
   return new Promise((resolve, reject) => {
     ReporterFactory.setResolve(resolve);
     ReporterFactory.setReject(reject);
+    const logs = [];
+    function registerLog(...args: any[]) {
+      logs.push({ args });
+    }
     var console = {
-      log: getConsoleLog,
-      debug: getConsoleLog,
-      error: getConsoleLog,
-      info: getConsoleLog,
-      warn: getConsoleLog,
+      log: (...args: any[]) => {
+        registerLog(...args);
+        getConsoleLog(args);
+      },
     };
-
     eval(`
       const { expect } = chai;
       const { spy } = sinon;
-
       ${mockWindowFunction()}
       ${transform(code)};
       ${tests};

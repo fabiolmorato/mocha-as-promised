@@ -33,7 +33,7 @@ export type Suites = Array<CurrentSuite>;
 export type Resolve = (value: unknown) => void;
 export type Reject = (reason?: any) => void;
 
-export type CallbackConsole = (value: any) => void;
+export type CallbackConsole = (value: any[]) => void;
 
 export interface WindowWithChaiAndSinon extends Window {
   chai: Chai.ChaiStatic | any;
