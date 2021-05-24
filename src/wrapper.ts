@@ -136,7 +136,7 @@ function run(getConsoleLog: CallbackConsole = () => {}): Promise<MochaResult> {
 
     eval(`
       const { expect } = chai;
-      const sinon = window.sinon;
+      const { spy } = sinon;
 
       ${mockWindowFunction()}
       ${transform(code)};
